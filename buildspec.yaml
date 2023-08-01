@@ -1,0 +1,30 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto11  # Replace with your preferred Java runtime version
+    commands:
+      - echo "Installing Java and Maven..."
+      - apt-get update
+      - apt-get install -y maven
+      
+  pre_build:
+    commands:
+      - echo "Running pre-build tasks..."
+      # Add any pre-build tasks, such as environment setup or property file adjustments
+
+  build:
+    commands:
+      - echo "Building the Spring Boot application..."
+      - mvn clean package  # Replace with your Maven build command
+      
+  post_build:
+    commands:
+      - echo "Post-build tasks..."
+      # Add any post-build tasks, such as copying artifacts or generating documentation
+
+artifacts:
+  files:
+    - 'target/your-spring-boot-app.jar'  # Replace with the actual name of your JAR/WAR file
+  discard-paths: yes
